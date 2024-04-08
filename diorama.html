@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diorama</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        body{
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container{
+            width: 30%;
+            height: 100%;
+            background-color: rgba(52, 52, 52, 0.615);
+            display: flex;
+            align-items: center;
+            flex-flow: column;
+            padding: 20px;
+            overflow: auto;
+            gap: 5px;
+            font-size: 15px;
+            position: absolute;
+            left: -30%;
+            visibility: hidden;
+            transition: transform 0.5s, left 0.5s ;
+            z-index: 1;
+            top: 0px;
+            color: white;
+        }
+        area{
+            outline: none;
+            position: relative;
+        }
+        .capital{
+            width: 100%;
+            height: auto;
+        }
+        .tribe{
+            font-size: 20px;
+        }
+        .close{
+            background-color: transparent;
+            border-color: transparent;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .open-popup{
+            visibility: visible;
+            transform: translate(100%);
+        }
+    </style>
+</head>
+<body>
+    <div id="map_bg">
+        <img src="svg_horizon.svg" alt="Horizon Zero Dawn Map" height="100%" width="100%" usemap="#image-map" class="map">
+    </div>
+    <map name="image-map">
+        <area alt="Carja" title="Carja" onclick="openPopup('carja')" coords="148,373,102,403,89,433,142,452,188,446,219,427,242,424,268,439,258,463,238,479,216,502,186,513,158,514,135,530,139,569,151,577,175,580,172,599,203,595,209,626,209,639,246,650,249,673,276,683,309,700,334,715,382,720,409,716,461,720,479,753,522,759,554,753,566,745,596,722,609,692,642,653,671,627,699,616,709,602,731,560,738,503,736,479,714,446,704,394,652,372,626,364,584,362,554,343,514,296,512,280,501,246,491,227,458,193,429,167,376,149,341,137,319,137,286,149,269,203,256,220,228,226,199,232,176,248,155,279,158,293,176,295,184,326,187,349,172,357,162,366" shape="poly">
+        <area alt="Oseram" title="Oseram" onclick="openPopup('oseram')" coords="348,126,368,136,401,144,425,154,450,175,477,201,497,224,515,258,518,285,535,314,560,335,574,342,620,348,648,355,685,371,713,384,724,405,730,434,740,475,737,514,791,487,800,485,828,474,847,462,857,434,874,408,887,397,916,377,948,355,968,351,994,344,1001,288,991,262,983,235,966,216,924,208,908,189,880,176,844,156,858,131,821,86,800,79,768,68,743,52,708,58,664,63,643,57,620,55,590,59,558,62,507,68,470,79,430,112,390,118" shape="poly">
+        <area alt="Nora" title="Nora" onclick="openPopup('nora')" coords="846,460,831,500,821,536,844,564,868,574,911,593,921,614,944,643,969,667,982,684,991,717,1014,746,1055,762,1108,774,1181,793,1216,786,1259,780,1315,774,1336,774,1365,764,1367,726,1368,706,1378,656,1397,640,1408,592,1404,566,1391,537,1368,511,1355,477,1379,484,1412,511,1451,534,1502,523,1512,494,1522,444,1504,420,1478,387,1449,363,1409,346,1389,307,1385,277,1341,211,1322,174,1282,153,1208,156,1132,173,1071,196,1014,260,1007,341,920,381,877,404" shape="poly">
+    </map>
+
+
+    <div class="container" id="carja">
+        <button class="close" onclick="closePopup('carja')">X</button>
+        <p class="tribe"><b>CARJA TRIBE</b></p>
+        <img src="Carja_Tribe.webp" alt="Carja Tribe" height="auto" width="100%">
+        <br>
+        <p><b>CAPITAL</b></p>
+        <img src="Meridian.webp" alt="Meridian" class="capital">
+        <p>Meridian</p>
+        <br>
+        <p><b>LEADER</b></p>
+        <img src="Avad.webp" alt="Avad" height="auto" width="100%">
+        <p>Avad</p>
+    </div>
+    <div class="container" id="oseram">
+        <button class="close" onclick="closePopup('oseram')">X</button>
+        <p class="tribe"><b>OSERAM</b></p>
+        <img src="Oseram.webp" alt="Oseram" height="auto" width="100%">
+        <br>
+        <p><b>CAPITAL</b></p>
+        <img src="The_Claim.webp" alt="Mainspring" class="capital">
+        <p>Mainspring</p>
+        <br>
+        <p><b>LEADER</b></p>
+        <img src="question-mark.webp" alt="NA" height="auto" width="100%">
+        <p>NA</p>
+    </div>
+    <div class="container" id="nora">
+        <button class="close" onclick="closePopup('nora')">X</button>
+        <p class="tribe"><b>NORA TRIBE</b></p>
+        <img src="Nora_Tribe.webp" alt="Nora Tribe" height="auto" width="100%">
+        <br>
+        <p><b>CAPITAL</b></p>
+        <img src="Mother's_Heart.webp" alt="Mother's Heart" class="capital">
+        <p>Mother's Heart</p>
+        <br>
+        <p><b>LEADER</b></p>
+        <img src="High_Matriarchs.webp" alt="High Matriarchs" height="auto" width="100%">
+        <p>High Matriarchs</p>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.0/jquery.maphilight.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.map').maphilight({
+                strokeColor: 'cyan'
+            });
+        });
+    
+        function openPopup(id) {
+            let popup = document.getElementById(id);
+            popup.classList.add("open-popup");
+            popup.style.visibility = 'visible';
+        }
+        function closePopup(id) {
+            let popup = document.getElementById(id);
+            popup.classList.remove("open-popup");
+            popup.style.visibility = 'hidden';
+        }
+    </script>
+</body>
+</html>
